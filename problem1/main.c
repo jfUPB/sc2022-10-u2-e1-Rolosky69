@@ -33,7 +33,7 @@ void printArray(struct array *parr)
     }
     printf("\n");
 }
-
+//funcion 1
 void getArray(struct array *parr)
 {
     char tamaño[12];
