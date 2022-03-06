@@ -62,7 +62,7 @@ void getArray(struct array *parr)
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
-    int size=0, i, j, h, tempVal1, tempVal2;
+    int i, j, h, tempVal1, tempVal2;
     struct array *arrTemp = malloc(sizeof(struct array) * 1);
 
     arrTemp->size=69;
