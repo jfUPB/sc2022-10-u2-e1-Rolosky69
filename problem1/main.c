@@ -33,15 +33,84 @@ void printArray(struct array *parr)
     }
     printf("\n");
 }
-
+//funcion 1
 void getArray(struct array *parr)
 {
-    
+    char tamano[12];
+    char entradas_al_tamano[12];
+
+    if (fgets(tamano, 6, stdin) != NULL)
+    {
+        tamano[strlen(tamano) -1] = 0;
+        int transformar = sscanf(tamano,"%d", &parr->size);
+        if(transformar == 1)
+        {
+     
+            parr->pdata = malloc(parr->size*sizeof(int));
+
+            for(int i = 0; i < parr->size; i++)
+            {
+                if (fgets(entradas_al_tamano, 6, stdin) != NULL)
+                {
+                    int transformar2 = sscanf(entradas_al_tamano, " %d ", parr->pdata + i);
+                }
+            }
+        }
+
+    }
 }
 
 void arrayCommon(struct array *arrIn1, struct array *arrIn2, struct array *arrOut)
 {
-    
+    int i, j, h, tempVal1, tempVal2;
+    struct array *arrTemp = malloc(sizeof(struct array) * 1);
+
+    arrTemp->size=69;
+    arrTemp->pdata = malloc(arrTemp->size * sizeof(int));
+
+    arrOut->size=0;
+
+    for(i = 0; i < arrTemp->size; i++)
+    {
+        *(arrTemp->pdata+i) = -1;
+    }
+
+    for(i = 0; i < arrIn1->size; i++)
+    {
+        for(j = 0; j < arrIn2->size; j++)
+        {
+            tempVal1 = *(arrIn1->pdata+i);
+            tempVal2 = *(arrIn2->pdata+j);
+
+            if( tempVal1 == tempVal2)
+            {
+                int verificador= 0;
+
+                for(h = 0; h < arrTemp->size; h++)
+                {
+                    int valTemp = *(arrTemp->pdata+h);
+                    if(tempVal1 == valTemp)
+                    {
+                        h = arrTemp->size;
+                        verificador =-1;
+                    }
+                }
+
+                if(verificador==0)
+                {
+                    *(arrTemp->pdata+arrOut->size)= tempVal1;
+                    arrOut->size++;
+                }
+            }
+        }
+    }
+
+    arrOut->pdata = malloc(arrOut->size * sizeof(int));
+
+    for(i = 0; i<arrOut->size; i++)
+    {
+        *(arrOut->pdata+i) = *(arrTemp->pdata+i);
+    } 
 }
 
 void freeMemory(struct array *arr1, struct array *arr2, struct array *arr3)
